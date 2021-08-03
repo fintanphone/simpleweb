@@ -6,6 +6,19 @@ The Example consists of HTTPD server demo with demostration of URI handling :
 
 * Open the project configuration menu (`idf.py menuconfig`) to configure Wi-Fi or Ethernet. See "Establishing Wi-Fi or Ethernet Connection" section in [examples/protocols/README.md](../../README.md) for more details.
 
+Notes in addition to below:
+       URI \stations with GET handler has been added.
+       
+
+Defined using code starting with : static const httpd_uri_t stations = {
+
+When user opens 192.168.x.xxx/stations
+
+The following GET handler will be invoked:
+      static esp_err_t stations_get_handler(httpd_req_t *req)
+
+
+
 * In order to test the HTTPD server persistent sockets demo :
     1. compile and burn the firmware `idf.py -p PORT flash`
     2. run `idf.py -p PORT monitor` and note down the IP assigned to your ESP module. The default port is 80
